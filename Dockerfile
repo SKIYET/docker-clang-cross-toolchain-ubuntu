@@ -20,8 +20,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   tar -Jxf "/tmp/${ARCH}.tar.xz" --transform='s|^\./||S' --strip-components=1 -C "${CROSS_ROOT}" && \
   rm -f "/tmp/${ARCH}.tar.xz" "${CROSS_ROOT}/build.log.bz2" && \
   echo "${SHA256SUM}" > /SHA256SUM.txt && \
-  wget -cT10 -P /tmp "https://launchpad.net/ubuntu/+archive/primary/+files/libxml2_2.12.7+dfsg+really2.9.14-0.4ubuntu0.4_amd64.deb" && \
-  apt install -y /tmp/libxml2_2.12.7+dfsg+really2.9.14-0.4ubuntu0.4_amd64.deb && \
-  rm -f /tmp/libxml2*.deb && \
   apt purge -y --auto-remove wget xz-utils ca-certificates && \
   rm -fr /var/lib/apt/lists/*
+
